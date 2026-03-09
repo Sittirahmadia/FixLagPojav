@@ -47,10 +47,10 @@ public class HudOverlay {
         HyperBoostV7.LOGGER.info("HUD Overlay V7 registered (F8 to toggle)");
     }
 
-    private static void render(DrawContext ctx, float tickDelta) {
+    private static void render(DrawContext ctx, net.minecraft.client.render.RenderTickCounter tickCounter) {
         MinecraftClient mc = MinecraftClient.getInstance();
         if (!visible) return;
-        if (mc.options.debugEnabled) return;
+        if (mc.inGameHud.getDebugHud().shouldShowDebugHud()) return;
         if (mc.currentScreen != null) return;
 
         TextRenderer font = mc.textRenderer;
